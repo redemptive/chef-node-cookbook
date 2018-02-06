@@ -1,6 +1,6 @@
 ## Title
 
-# node
+# chef-node-cookbook
 
 ## Description
 
@@ -14,6 +14,10 @@ A chef cookbook for installing nodejs on an ubuntu server
 
 ## Installation and Usage
 
-- Install VirtualBox
-- Install Vagrant
-- Install ChefDK
+- Installation of dependancies
+  - Install VirtualBox
+  - Install Vagrant
+  - Install ChefDK
+
+- Testing the cookbook
+  - Download the repository, navigate to it in the command line and run kitchen test
