@@ -4,7 +4,7 @@
 
 ## Description
 
-A chef cookbook for installing nodejs on an ubuntu server
+A chef cookbook for installing nodejs on an ubuntu server. This cookbook also installs the nginx web server and configures it to be used as a reverse proxy to allow requests from port 80 to be passed onto nodejs running on port 3000
 
 ## Technologies
 
