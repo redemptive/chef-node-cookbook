@@ -14,21 +14,29 @@ end
 
 template '/etc/nginx/sites-available/default' do
 	source 'proxy.conf.erb'
-	owner 'root'
-	group 'root'
-	mode '0750'
+	owner  'root'
+	group  'root'
+	mode   '0750'
 	notifies :reload, 'service[nginx]'
 end
 
-remote_file '/tmp/nodesource_setup.sh' do
-	source 'https://deb.nodesource.com/setup_6.x'
-	action :create
+execute 'install node' do
+	command  'curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -'
 end
 
-execute 'update node resources' do
-	command 'sh /tmp/nodesource_setup.sh'
+# execute 'update node resources' do
+# 	command 'sh /tmp/nodesource_setup.sh'
+# end
+
+execute 'clean repos' do
+	command 'sudo rm -rf /var/lib/apt/lists/*'
+	command 'apt-get clean'
 end
+
+apt_update
 
 package 'nodejs' do
 	action :upgrade
 end
+
+# package 'npm'
